@@ -55,6 +55,11 @@ class QtTools(QtPackage):
         default=False,
         description="Qt Linguist can be used by translator to translate text in Qt applications.",
     )
+    variant(
+        "uitools",
+        default=False,
+        description="Qt Ui Tools allows you to instantiate Qt Widget Designer forms at run-time.",
+    )
 
     # use of relative path in https://github.com/qt/qttools/blob/6.8.2/.gitmodules
     conflicts("+assistant", when="@6.8.2", msg="Incorrect git submodule prevents +assistant")
@@ -82,4 +87,5 @@ class QtTools(QtPackage):
             self.define_qt_feature_from_variant("designer"),
             self.define_qt_feature_from_variant("zstd", "designer"),
             self.define_qt_feature_from_variant("linguist"),
+            self.define_qt_feature_from_variant("uitools"),
         ]
